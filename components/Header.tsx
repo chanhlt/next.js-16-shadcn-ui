@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { siteConfig } from "@/lib/config";
@@ -58,13 +58,14 @@ export function Header() {
               <SheetTitle className="sr-only">Menu</SheetTitle>
               <div className="flex flex-col gap-1 mt-8">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="flex items-center py-2 px-3 rounded-md text-sm font-medium hover:bg-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  <SheetClose asChild key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="flex items-center py-2 px-3 rounded-md text-sm font-medium hover:bg-accent transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
                 ))}
               </div>
             </SheetContent>
